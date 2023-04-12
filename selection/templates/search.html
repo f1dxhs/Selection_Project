@@ -1,0 +1,11 @@
+<form method="post" action="{% url 'search' %}">
+    {% csrf_token %}
+    <label for="length">带宽:</label>
+    <input type="text" name="length" id="length">
+    <br>
+    <label for="T_Force">Force:</label>
+    <input type="text" name="T_Force" id="T_Force">
+    <br>
+    <input type="submit" value="Search">
+</form>
+

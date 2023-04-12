@@ -1,0 +1,22 @@
+<!-- template_name.html -->
+<table>
+    <thead>
+      <tr>
+        <th>Length</th>
+        <th>T_Force</th>
+        <th>T_Weight</th>
+        <th>map_code</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+      <tr>
+        <td>{{ row.length }}</td>
+        <td>{{ row.T_Force }}</td>
+        <td>{{ row.T_weight }}</td>
+        <td>{{ row.map_code }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
