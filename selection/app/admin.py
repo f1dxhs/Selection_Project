@@ -4,4 +4,4 @@ from .models import Item
 from django.contrib.auth.admin import UserAdmin
 
 class ItemAdmin(UserAdmin):
-    list_display = ('length', 'T_Force', 'T_weight', 'map_code')
+    list_display = ('length', 'Dia_dr', 'T_Force', 'T_Torque', 'T_weight', 'map_code')
