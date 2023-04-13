@@ -1,34 +1,38 @@
 from django.shortcuts import render
 from .models import Item
 from .forms import ItemSearchForm
-
+from django.db.models import Q
 def search(request):
     if request.method == 'POST':
         try:
-            length = request.POST.get('length')
-            T_Force = request.POST.get('T_Force')
-            Dia_dr = request.POST.get('T_Force')
-            T_Torque = request.POST.get('T_Torque')
-            results = Item.objects.filter(length=length, T_Force__gt=T_Force, Dia_dr = Dia_dr, T_Torque__gt= T_Torque).first()
+            Length = request.POST.get('length')
+            Force = request.POST.get('T_Force')
+            Dia = request.POST.get('Dia_dr')
+            Torque = request.POST.get('T_Torque')
+            print(Length, Force, Dia, Torque)
+            results = Item.objects.filter(length=Length, Dia_dr = Dia, T_Force__gt=Force\
+                                          ,T_Torque__gt= Torque)
+            print(results)
         except ValueError:
             return render(request, 'error.html')
         
         if results.exists():
-            weights = [r.T_weight for r in results]
             mapcodes = [r.map_code for r in results]
+            weights = [r.T_Weight for r in results]
+            
 
             return render(request, 'results.html', {'weights': weights, 'mapcodes': mapcodes})
         else:
-            print(length)
-            print(T_Force)
+            # print(length)
+            # print(T_Force)
             return render(request, 'no_results.html')
     return render(request, 'search.html')
 
 
-# filtered_data = Item.objects.filter(
-# Q(length=length) & Q(dia_dr=dia_dr) & Q(T_Force__gte=t_force) & Q(T_Torque__gte=t_torque)
-#         ).order_by('-T_Force','-T_Torque','-weight')[:1]
-
+# results = Item.objects.filter(length=length, Dia_dr=Dia_dr, T_Force__gt=T_Force, T_Torque__lt=T_Torque) \
+#                        .annotate(min_force=Min('T_Force'), min_torque=Min('T_Torque')) \
+#                        .filter(Force=min_force, Torque=min_torque) \
+#                        .values('weight', 'code')
 
 # from django.http import JsonResponse
 # import mysql.connector
