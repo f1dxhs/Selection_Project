@@ -29,48 +29,6 @@ def search(request):
     return render(request, 'search.html')
 
 
-# results = Item.objects.filter(length=length, Dia_dr=Dia_dr, T_Force__gt=T_Force, T_Torque__lt=T_Torque) \
-#                        .annotate(min_force=Min('T_Force'), min_torque=Min('T_Torque')) \
-#                        .filter(Force=min_force, Torque=min_torque) \
-#                        .values('weight', 'code')
-
-# from django.http import JsonResponse
-# import mysql.connector
-
-# def filter_data(request):
-#     # 从 GET 请求参数中获取筛选参数
-#     length = request.GET.get('length', None)
-#     t_force = request.GET.get('t_force', None)
-
-#     # 连接到本地 MySQL 数据库
-#     cnx = mysql.connector.connect(
-#         host='localhost',
-#         user='root',
-#         password='root',
-#         database='roller_selection_test'
-#     )
-
-#     # 创建一个查询游标
-#     cursor = cnx.cursor()
-
-#     # 构造查询语句
-#     query = "SELECT t_weight, map_code FROM a WHERE length=%s AND T_Force=%s"
-#     params = (length, t_force)
-
-#     # 执行查询语句
-#     cursor.execute(query, params)
-
-#     # 获取查询结果
-#     results = cursor.fetchall()
-
-#     # 关闭游标和连接
-#     cursor.close()
-#     cnx.close()
-
-#     # 将查询结果以 JSON 格式返回给 Web 客户端
-#     data = [{'t_weight': row[0], 'map_code': row[1]} for row in results]
-#     return JsonResponse({'data': data})
- 
 
 
 
@@ -82,3 +40,15 @@ def show_all_data(request):
     all_data = Item.objects.all()
     # 将数据传递到模板中进行渲染
     return render(request, 'all_data.html', {'data': all_data})
+
+
+
+
+
+# 假设这样一种情况，我已经用django开发了一个网页，并且他可以对我本地的数据库的一张表单进行一些基本的筛选工作，我在我的models.py里
+# 用meta函数提到了这张表，那现在如果我想换一张表应该怎么操作呢，我并不是需要简单的在models.py里更改表单，而是通过用户的要求来选择应该使用哪张表单
+# 大致的情况是这样，用户在网页上选择要对a或者b进行筛选，而a和b分别对应我本地数据库的表，如果用户选择a那么就对a表进行筛选操作，此外a，b量表的数据类型是相同的 只是数值不同，所以我希望他们可以共用一个筛选函数
+
+
+
+# 工作流程: 多app方向 字典查阅 ---> 写出父类class ---> 
