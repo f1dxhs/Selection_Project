@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DLM选型网页</title>
+    <title>网页搜索功能</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="static 'css/base.css' %" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
-      <h1>DLM选型网页</h1>
+      <h1>网页搜索功能</h1>
     </header>
     <main>
       <form method="post" action="{% url 'search' %}">
@@ -62,3 +62,13 @@
 </html>
 
 
+
+{% for weight in weights %}
+    <p>Weight: {{ weight }}</p>
+
+{% endfor %}
+
+{% for mapcode in mapcodes %}
+    <p>图号: {{ mapcode }}</p>
+
+{% endfor %}
