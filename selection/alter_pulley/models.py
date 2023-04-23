@@ -9,7 +9,7 @@ class Item(models.Model):
     map_code = models.CharField(max_length=20)
 
     class Meta: 
-        db_table = 'test_data'
+        db_table = 'test_data2'
 
 
 

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'alter_pulley',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'roller_selection_test',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'Xhs0808**',
         'HOST': 'localhost',
         'PORT': '3306'
     }
