@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'roller_selection_test',
         'USER': 'root',
-        'PASSWORD': 'Xhs0808**',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306'
     }
