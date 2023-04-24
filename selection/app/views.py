@@ -5,10 +5,12 @@ from django.db.models import Q
 def search(request):
     if request.method == 'POST':
         try:
+            
             Length = request.POST.get('length')
             Force = request.POST.get('T_Force')
             Dia = request.POST.get('Dia_dr')
             Torque = request.POST.get('T_Torque')
+
             print(Length, Force, Dia, Torque)
             results = Item.objects.filter(length=Length, Dia_dr = Dia, T_Force__gt=Force\
                                           ,T_Torque__gt= Torque)
