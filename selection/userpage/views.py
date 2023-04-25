@@ -10,6 +10,10 @@ def choose_app(request):
         elif app == 'alter_pulley':
             return redirect('/alter/')  # 重定向到 alter_app 的 URL
         elif app == 'roller':
-            return redirect('/roller')
+            return redirect('/roller_35dt/')
     return render(request, 'userpage.html')  # 渲染选择 app 的页面
+
+
+
+
 

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'alter_pulley',
+    'roller_35dt',
 ]
 
 MIDDLEWARE = [

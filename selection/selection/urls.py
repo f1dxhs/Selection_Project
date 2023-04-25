@@ -22,4 +22,5 @@ urlpatterns = [
     path('drive/',include('app.urls')),
     path('', include('userpage.urls')),
     path('alter/',include('alter_pulley.urls')),
+    path('roller_35dt/', include('roller_35dt.urls')),
 ]
