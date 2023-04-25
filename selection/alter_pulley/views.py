@@ -2,16 +2,14 @@ from django.shortcuts import render
 from .models import Item
 from .forms import ItemSearchForm
 from django.db.models import Q
-def search(request):
+def search_alter(request):
     if request.method == 'POST':
         try:
             Length = request.POST.get('length')
             Force = request.POST.get('T_Force')
             Dia = request.POST.get('Dia_dr')
-            Torque = request.POST.get('T_Torque')
-            print(Length, Force, Dia, Torque)
-            results = Item.objects.filter(length=Length, Dia_dr = Dia, T_Force__gt=Force\
-                                          ,T_Torque__gt= Torque)
+            print(Length, Force, Dia)
+            results = Item.objects.filter(length=Length, Dia_dr = Dia, T_Force__gt=Force)
             print(results)
         except ValueError:
             return render(request, 'error.html')
@@ -19,14 +17,15 @@ def search(request):
         if results.exists():
             mapcodes = [r.map_code for r in results]
             weights = [r.T_Weight for r in results]
+            weights_J = [r.T_Weight_J for r in results]
             
 
-            return render(request, 'results.html', {'weights': weights, 'mapcodes': mapcodes})
+            return render(request, 'results_alter.html', {'weights': weights, 'weights_J': weights_J, 'mapcodes': mapcodes})
         else:
             # print(length)
             # print(T_Force)
             return render(request, 'no_results.html')
-    return render(request, 'search.html')
+    return render(request, 'search_alter.html')
 
 
 
