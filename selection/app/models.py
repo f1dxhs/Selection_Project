@@ -5,8 +5,8 @@ class Item(models.Model):
     Dia_dr = models.FloatField()
     T_Torque = models.FloatField()
     T_Force = models.FloatField()
-    T_Weight = models.CharField(max_length=20)
-    map_code = models.CharField(max_length=20)
+    T_Weight = models.CharField(max_length=50)
+    map_code = models.CharField(max_length=50)
 
     class Meta: 
         db_table = 'test_data'
