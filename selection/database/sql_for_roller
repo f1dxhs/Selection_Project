@@ -1,0 +1,7 @@
+ALTER TABLE tableA ADD COLUMN rotate_weight INT; -- 添加新的列rotate_weight到tableA
+
+UPDATE tableA
+SET tableA.rotate_weight = tableB.rotate_weight -- 将tableB的rotate_weight赋值给tableA的rotate_weight
+FROM tableA
+JOIN tableB ON tableA.D = tableB.D AND tableA.length = tableB.length; -- 使用D和length进行连接条件
+

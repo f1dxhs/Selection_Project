@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DLM选型网页</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static 'css/base.css' %" />
+  </head>
+  <body>
+    <header>
+      <h1>托辊</h1> 
+    </header>
+    <main>
+      <form method="post" action="{% url 'search_roller' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="tablename">托辊类型:</label>
+            <select name="tablename" id="tablename"></select>
+            <script>
+              var tablenameOptions = [
+                { display: "35度roller", value: "1" },
+                // { display: "45度roller", value: "45dt_roller_cleaned" },
+                // { display: "60度roller", value: "60dt_roller_cleaned" },
+              ];
+              var tablenameSelectList = document.getElementById("tablename");
+              for (var i = 0; i < tablenameOptions.length; i++) {
+                var tablenameOption = document.createElement("option");
+                tablenameOption.value = tablenameOptions[i].value;
+                tablenameOption.text = tablenameOptions[i].display;
+                tablenameSelectList.add(tablenameOption);
+              }
+            </script>
+        </div>
+          
+        <div class="form-group">
+          <label for="length">带宽:</label>
+          <select name="length" id="length"></select>
+          <script>
+            var options = [
+              400, 500, 650, 800, 1000, 1200, 1400, 1600, 1800, 2000, 2200, 2400,
+            ];
+            var selectList = document.getElementById("length");
+            for (var i = 0; i < options.length; i++) {
+              var option = document.createElement("option");
+              option.value = options[i];
+              option.text = options[i] + "mm";
+              selectList.add(option);
+            }
+          </script>
+        </div>
+        <div class="form-group">
+          <label for="Dia_dr">托辊直径:</label>
+          <select id="Dia_dr" name="Dia_dr"></select>
+          <script>
+            var options = [
+              63.5, 76, 89, 108, 133, 159, 194];
+            var selectList = document.getElementById("Dia_dr");
+            for (var i = 0; i < options.length; i++) {
+              var option = document.createElement("option");
+              option.value = options[i];
+              option.text = options[i] + "mm";
+              selectList.add(option);
+            }
+          </script>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Search" />
+        </div>
+      </form>
+      <button onclick="window.location.href='http://127.0.0.1:8000'">返回首页</button>
+    </main>
+  </body>
+</html>
+
+
+
+
+
